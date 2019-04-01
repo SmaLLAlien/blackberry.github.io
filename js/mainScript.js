@@ -1,7 +1,7 @@
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera( 75, 300 / 300, 0.1, 1000 );
 
-let renderer = new THREE.WebGLRenderer();
+let renderer = new THREE.WebGLRenderer({ alpha: true });
 renderer.setSize( 300, 300 );
 
 let container = document.getElementById("container");
