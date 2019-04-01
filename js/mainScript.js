@@ -53,12 +53,33 @@ mtlLoader.load('evaWithHands.mtl', function (materials) {
 
 });
 
+let mouseX = 0, mouseY = 0;
+
+let windowHalfX = 300 / 2;
+let windowHalfY = 300 / 2;
 
 function animate() {
   requestAnimationFrame( animate );
-  //render();
-  // scene.rotation.x += 0.01;
-  //scene.rotation.y += 0.01;
+  render();
   renderer.render( scene, camera );
 }
 animate();
+
+
+
+container.addEventListener( 'mousemove', onDocumentMouseMove, false );
+function onDocumentMouseMove( event ) {
+
+  mouseX = ( event.clientX - windowHalfX ) / 2;
+  mouseY = ( event.clientY - windowHalfY ) / 2;
+
+}
+
+function render() {
+  camera.position.x += ( mouseX - camera.position.x ) * .05;
+  camera.position.y += ( - mouseY - camera.position.y ) * .05;
+
+  camera.lookAt( scene.position );
+
+  renderer.render( scene, camera );
+}

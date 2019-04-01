@@ -998,17 +998,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainScript.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="mainScript.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/mainScript.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="755">
-              <caret line="58" column="4" lean-forward="false" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+            <state relative-caret-position="534">
+              <caret line="69" column="9" lean-forward="false" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mainScript2.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mainScript2.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/mainScript2.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
@@ -1244,12 +1244,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554119362626</updated>
-      <workItem from="1554119364224" duration="3204000" />
+      <workItem from="1554119364224" duration="4178000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3204000" />
+    <option name="totallyTimeSpent" value="4178000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -2260,14 +2260,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/mainScript2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -2278,8 +2270,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/mainScript.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="755">
-          <caret line="58" column="4" lean-forward="false" selection-start-line="58" selection-start-column="4" selection-end-line="58" selection-end-column="4" />
+        <state relative-caret-position="534">
+          <caret line="69" column="9" lean-forward="false" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/mainScript2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
