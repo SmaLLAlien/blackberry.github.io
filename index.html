@@ -2,27 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
   <title>Title</title>
 
   <style>
-    body { margin: 0;
-      background: black}
+
     #container {
 
       transition: transform 3s;
       width: 300px;
       height: 300px;
     //margin: 150px ;
-      background: red;
+     // background: red;
     }
     #container:hover {
     //transform: translate(1000px, 500px);
     }
+
   </style>
 </head>
 <body>
 
-<div id="container"></div>
+  <div class="loader">
+    <div class="loader__eva">
+      <div class="loader__leaves shadowLeaves"></div>
+    </div>
+  </div>
+  <script src="js/preloader.js"></script>
+
+  <div id="container"></div>
 
 
 

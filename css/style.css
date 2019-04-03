@@ -1,8 +1,7 @@
 body {
   width: 100%;
   height: 100%;
-  background: url("../assets/images/clouds.jpg") no-repeat top ;
-}
+  background: url("../assets/images/clouds.jpg") no-repeat top; }
 
 .loader {
   width: 100%;
@@ -10,24 +9,21 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background: linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%);
+  background: linear-gradient(to bottom, #94c5f8 1%, #a6e6ff 70%, #b1b5ea 100%);
   overflow: hidden;
   position: fixed;
   left: 0;
   top: 0;
-  right:0;
-  bottom:0;
-  z-index: 9999;
-
-  &__eva {
+  right: 0;
+  bottom: 0;
+  z-index: 9999; }
+  .loader__eva {
     align-self: center;
     width: 256px;
     height: 256px;
     background: url("../assets/images/evaPreload.png");
-    position: relative;
-
-  }
-  &__leaves {
+    position: relative; }
+  .loader__leaves {
     width: 30px;
     height: 30px;
     background: url("../assets/images/small.png") no-repeat;
@@ -35,17 +31,14 @@ body {
     border-radius: 50%;
     top: 45%;
     left: 50%;
-    opacity: 0;
-  }
-}
+    opacity: 0; }
 
 .shadowLeaves {
   transition: 1s;
   opacity: 1;
-  -webkit-box-shadow: 0px -1px 62px 12px rgba(29,194,67,1);
-  -moz-box-shadow: 0px -1px 62px 12px rgba(29,194,67,1);
-  box-shadow: 0px -1px 62px 12px rgba(29,194,67,1);
-}
+  -webkit-box-shadow: 0px -1px 62px 12px #1dc243;
+  -moz-box-shadow: 0px -1px 62px 12px #1dc243;
+  box-shadow: 0px -1px 62px 12px #1dc243; }
 
 /*
  #container {
@@ -73,3 +66,5 @@ body {
       }
     }
  */
+
+/*# sourceMappingURL=style.css.map */
