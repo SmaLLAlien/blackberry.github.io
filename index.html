@@ -2,37 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="css/fontawesome.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <title>blackberry.art</title>
 
-  <style>
-    body { margin: 0;
-      background: black}
-    #container {
 
-      transition: transform 3s;
-      width: 300px;
-      height: 300px;
-    //margin: 150px ;
-      background: red;
-    }
-    #container:hover {
-    //transform: translate(1000px, 500px);
-    }
-  </style>
 </head>
 <body>
 
-<div id="container"></div>
+ <div class="wrapper"><!--
+   <div class="loader">
+     <div class="loader__eva">
+       <div class="loader__leaves shadowLeaves"></div>
+     </div>
+   </div>
+   <script src="js/preloader.js"></script>   -->
+
+   <div id="container"></div>
+
+   <div class="menu">
+     <div class="menu__lines">
+       <div class="menu__border">
+         <div class="menu__link">
+           <div class="text">profile</div>
+           <div class="arrow"><i class="fas fa-arrow-left"></i></div>
+         </div>
+         <div class="menu__link">
+           <div class="text">portfolio</div>
+           <div class="arrow"><i class="fas fa-arrow-left"></i></div>
+         </div>
+       </div> <!-- menu__border -->
+     </div> <!-- menu__lines -->
+
+
+     <div class="menu__lines">
+       <div class="menu__border">
+         <div class="menu__link">
+           <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+           <div class="text">contacts</div>
+         </div>
+         <div class="menu__link">
+           <div class="arrow"><i class="fas fa-arrow-right"></i></div>
+           <div class="text">shoutbox</div>
+         </div>
+       </div> <!-- menu__border -->
+     </div> <!-- menu__lines -->
+   </div> <!--menu -->
+ </div> <!--wrapper -->
 
 
 
 
 
-
-
-<!--
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
--->
 <script src="js/lib/three.min.js"></script>
 <script src ="js/lib/OrbitControls.js"></script>
 <script src="js/lib/OBJLoader.js"></script>
