@@ -135,7 +135,7 @@ function rotor(e) {
         window.cancelAnimationFrame(id);
         container.style.position = "relative";
         container.style.transition = "transform 3s";
-        container.transform = "translate(250, 250)"
+        container.transform = "translate(25, 25)"
       }
     }
   }
