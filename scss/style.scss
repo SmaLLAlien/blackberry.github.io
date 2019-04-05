@@ -3,6 +3,11 @@
   src: url("../assets/fonts/exo.woff2") format("woff2"),
       url("../assets/fonts/exo.woff") format("woff");
 }
+@font-face {
+  font-family: "ExoLight";
+  src: url("../assets/fonts/exoLight.woff2") format("woff2"),
+  url("../assets/fonts/exoLight.woff") format("woff");
+}
 $arrows: #5c8dae;
 
 body {
@@ -105,31 +110,84 @@ body {
     flex-direction: row;
     justify-content: space-between;
     background: rgba(255,255,255, 0.5);
+    overflow: hidden;
 
-    .text {
+    .text--left {
       padding: 10px;
       font-family: Exo;
       font-size: 1em;
       color: #fff;
       text-transform: uppercase;
+      order: 1;
     }
-    .arrow {
+    .text--right {
+      padding: 10px;
+      font-family: Exo;
+      font-size: 1em;
+      color: #fff;
+      text-transform: uppercase;
+      order: 2;
+    }
+    .arrow--left {
       padding: 10px;
       background: rgba(255,255,255, 0.8);
-
+      order: 2;
       .fa-arrow-left {
         color: $arrows;
       }
+
+    }
+    .arrow--right {
+      padding: 10px;
+      background: rgba(255,255,255, 0.8);
+      order:1;
+
       .fa-arrow-right {
         color: $arrows;
+      }
+    }
+
+  // HOVER menu__links
+    &:hover {
+      background: rgba(255,255,255, 0.9);
+      .text--left {
+        order: 2;
+        color: $arrows;
+      }
+      .text--right {
+        order: 1;
+        color: $arrows;
+      }
+      .arrow--left {
+        order: 1;
+        background: $arrows;
+        .fa-arrow-left {
+          animation: blink .4s infinite ease;
+        }
+      }
+      .arrow--right {
+        order: 2;
+        background: $arrows;
+        .fa-arrow-right {
+          animation: blink .4s infinite ease;
+        }
       }
     }
   }
   &__link:first-child {
     margin-bottom: 5px;
   }
+
 }
 
+@keyframes blink {
+  0% {
+    color: $arrows;
+  }
+  100% {
+    color: rgba(255,255,255, 0.9);
+  }
+}
 
 // OBJECT BLOCK
 
