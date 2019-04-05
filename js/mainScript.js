@@ -31,7 +31,7 @@ scene.add(backLight);
 
 
 
-camera.position.z = 200;
+camera.position.z = 100;
 
 // LOADING MODEL
 
