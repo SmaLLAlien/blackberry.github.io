@@ -44,7 +44,7 @@ loader.load( 'assets/models/scene.gltf', function ( gltf ) {
 
 
 
-  //mesh.position.set(10, -30, 1);
+  mesh.position.set(10, -30, 1);
   mesh.rotation.set(0.2, 0, 0);
   console.log(mesh.rotation);
 } );
@@ -54,13 +54,11 @@ loader.load( 'assets/models/scene.gltf', function ( gltf ) {
 function animate() {
   requestAnimationFrame( animate );
   controls.update();
-  //mesh.rotation.x += 0.01;
-  //mesh.rotation.y += 0.01;
   renderer.render( scene, camera );
-  //mesh.rotation.set(0.2, 0, 0);
+
   //render();
   container.addEventListener("click", rotor, false);
-//controls.reset();
+
 }
 animate();
 
@@ -73,6 +71,7 @@ animate();
  }
 
  */
+/*
 function render() {
   if(controls.object.position.x !==0) {
     if(controls.object.position.x > 0 ) {
@@ -114,7 +113,44 @@ function render() {
     }
   }
 }
+*/
 
+// ***************************************************************************************************************
+// WORKING WITH DOM
+
+
+// get menu block
+let menu = document.getElementsByClassName("menu")[0];
+let menuChildren = [];
+if(menu.children) {
+  for(let i = 0; i < menu.children.length; i++) {
+    menuChildren[i] = menu.children[i];
+    menuChildren[i].style.opacity = 0;
+  }
+}
+
+// check opacity of menu blocks and change it
+function checkOpacity(elem){
+  if(elem.style.opacity == 0) {
+    console.log(elem.style.visibility, "1");
+     return  elem.style.opacity = 1;
+
+  }
+  else {
+    console.log(elem.style.visibility, "2");
+     return  elem.style.opacity = 0;
+  }
+}
+
+// call change opacity with interval
+function blink(elem) {
+    let t = setInterval(checkOpacity, 70, elem);
+    setTimeout(function(){clearInterval(t)}, 1300);
+}
+
+
+blink(menuChildren[0]);
+blink(menuChildren[1]);
 
 
 let id;
@@ -133,9 +169,9 @@ function rotor(e) {
       if(mesh.rotation.y >= 0.15) {
         mesh.rotation.y = 0.15;
         window.cancelAnimationFrame(id);
-        container.style.position = "relative";
-        container.style.transition = "transform 3s";
-        container.transform = "translate(25, 25)"
+        //container.style.position = "relative";
+        //container.style.transition = "transform 3s";
+        //container.transform = "translate(25, 25)"
       }
     }
   }
