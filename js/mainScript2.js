@@ -1,10 +1,10 @@
 /**
  * Created by Alien on 18.03.2019.
  */
-document.addEventListener("DOMContentLoaded", init);
+//document.addEventListener("DOMContentLoaded", init);
 
 
-function init() {
+//function init() {
 
   let scene = new THREE.Scene();
 //scene.background = new THREE.Color( 0xffffff );
@@ -159,35 +159,49 @@ container.classList.toggle("container__animate");
 
   // ROTATE OBJECT TO MENU BLOCKS
   let stopLookRight;
-  function lookingRight(e) {
+  function lookingRight(eva) {
     resetControls();
     //window.cancelAnimationFrame(resetControls);
-    stopLookRight = requestAnimationFrame( lookingRight );
-    mesh.rotation.y += .01;
-    if(mesh.rotation.y > 0.6){
-      mesh.rotation.y = 0.6;
+    stopLookRight = requestAnimationFrame( function() {lookingRight(mesh)} );
+    eva.rotation.y += .01;
+    if(eva.rotation.y > 0.6){
+      eva.rotation.y = 0.6;
       blink(menuChildren[1]);
       window.cancelAnimationFrame(stopLookRight);
-      lookingLeft(e);
-
     }
   }
 
-setTimeout(lookingRight,6000, mesh);
+
 
   let stopLookLeft;
-  function lookingLeft(e) {
-    stopLookLeft = requestAnimationFrame( lookingLeft );
-    mesh.rotation.y -= .01;
-    if(mesh.rotation.y < -0.6){
-      mesh.rotation.y = -0.6;
+  function lookingLeft(eva) {
+    resetControls();
+    stopLookLeft = requestAnimationFrame( function() {lookingLeft(mesh)} );
+    eva.rotation.y -= .01;
+    if(eva.rotation.y < -0.6){
+      eva.rotation.y = -0.6;
       blink(menuChildren[0]);
       window.cancelAnimationFrame(stopLookLeft);
     }
 
   }
 
- 
+  let stopLookCenter;
+  function lookingCenter(eva) {
+    resetControls();
+    stopLookCenter = requestAnimationFrame( function() {lookingCenter(mesh)} );
+    eva.rotation.y += .01;
+    if(eva.rotation.y < 0.2 && eva.rotation.y > -0.2){
+      eva.rotation.y = 0;
+      window.cancelAnimationFrame(stopLookCenter);
+    }
+
+  }
+
+  setTimeout(function() {lookingRight(mesh)},4000 );
+  setTimeout(function() {lookingLeft(mesh)}, 6500);
+  setTimeout(function() {lookingCenter(mesh)}, 10500);
+
 
   let id;
   function rotor(e) {
@@ -218,7 +232,7 @@ setTimeout(lookingRight,6000, mesh);
 
 
   }
-}
+//}
 
 
 /*

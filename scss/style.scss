@@ -207,8 +207,8 @@ body {
 
 
  .container__animate {
-      -webkit-animation: slide-bottom 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-      animation: slide-bottom 5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      -webkit-animation: slide-bottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation: slide-bottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
 
     @keyframes slide-bottom {
