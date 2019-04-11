@@ -227,7 +227,7 @@ body {
 
 .profile {
   width: 550px;
-  border: 1px solid red;
+  //border: 1px solid red;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -238,28 +238,24 @@ body {
     align-self: flex-end;
     display: flex;
     flex-direction: row;
-    border: 1px solid blue;
-
+    margin-bottom: 5px;
   }
-  &__triangle {
+  &__triangleup {
     height: 100%;
     width: 18%;
-    border: 1px solid green;
     -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
     clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-    //background-size: 10px 10px;
-    background-image: url("https://cdn1.savepice.ru/uploads/2019/4/11/9bec4a8239f2b082e7c602d517ecb1e9-full.png");
+    background-image: url("../assets/images/linesbackground.png");
     background-repeat: repeat;
 
   }
-  &__rightblock {
+  &__rightblockup {
     height: 100%;
     width: 82%;
-    border: 1px solid green;
-    background-image: url("https://cdn1.savepice.ru/uploads/2019/4/11/9bec4a8239f2b082e7c602d517ecb1e9-full.png");
+    background-image: url("../assets/images/linesbackground.png");
     background-repeat: repeat;
-    -webkit-clip-path: polygon(0 0, 530px 0, 100% 20px, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
-    clip-path: polygon(0 0, 95% 0, 100% 20px, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+    -webkit-clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
   }
   &__info {
     width: 100%;
@@ -267,6 +263,28 @@ body {
     background: $profile;
   }
   &__down {
+    width: 90%;
+    height: 80px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+  }
+  &__triangledown {
+    height: 100%;
+    width: 18%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    background-image: url("../assets/images/linesbackground.png");
+    background-repeat: repeat;
 
+  }
+  &__rightblockdown {
+    height: 100%;
+    width: 82%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 100%, 0 0);
+    background-image: url("../assets/images/linesbackground.png");
+    background-repeat: repeat;
   }
 }
