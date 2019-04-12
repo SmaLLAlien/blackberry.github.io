@@ -185,6 +185,20 @@ body {
     clip-path: polygon(100% 0, 0% 100%, 100% 100%);
     background-image: url("../assets/images/linesbackground.png");
     background-repeat: repeat; }
+    .profile__triangleup .redTriangle {
+      width: 35px;
+      height: 35px;
+      -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+      background: #fe6402;
+      border: 1px solid red;
+      margin-left: 50px;
+      margin-top: 20px; }
+      .profile__triangleup .redTriangle .fa-arrow-left {
+        color: #fff;
+        margin-left: 20px;
+        margin-top: 15px;
+        font-size: 0.9em; }
   .profile__rightblockup {
     height: 100%;
     width: 82%;
