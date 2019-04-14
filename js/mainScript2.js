@@ -72,7 +72,11 @@
 // WORKING WITH DOM
 
 container.classList.toggle("container__animate");
+let main = document.getElementsByClassName("main")[0];
+main.style.width = 0;
 
+let profile = main.getElementsByClassName("profile")[0];
+let menuProfile = document.getElementsByClassName("menu__link")[0];
 
 // get menu block
   let menu = document.getElementsByClassName("menu")[0];
@@ -219,18 +223,28 @@ function changeWidth(div) {
   }
 }
 
+// ROTATE OBJECT TO 90 DEG
+let stopRotateY;
+function rotateY(eva) {
+  resetControls();
+  stopRotateY = window.requestAnimationFrame(function() {rotateY(mesh)});
+  eva.rotation.y -= 0.05;
+  if(eva.rotation.y < -1.07) {
+    eva.rotation.y = -1.07;
+    window.cancelAnimationFrame(stopRotateY);
+  }
+}
 
-let main = document.getElementsByClassName("main")[0];
-main.style.width = 0;
-
-let profile = main.getElementsByClassName("profile")[0];
-let menuProfile = document.getElementsByClassName("menu__link")[0];
-
-
-menuProfile.addEventListener("click",function () {
+// CHANGE OBJECT POSITION AND ROTATION AFTER CLICKING MENU BLOCKS, SHOW MAIN  BLOCK
+function reactToCLick() {
+  rotateY(mesh);
   changeWidth(main);
   container.style.left = "80%";
-});
+}
+
+
+
+menuProfile.addEventListener("click", reactToCLick);
 //menu.addEventListener("click", rotor);
 //menu.addEventListener("click", function(){container.style.left = "80%"});
   let id;
