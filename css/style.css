@@ -152,7 +152,11 @@ body {
   position: absolute;
   left: 50%;
   margin-left: -150px;
-  margin-top: -150px; }
+  margin-top: -150px;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out; }
 
 .container__animate {
   -webkit-animation: slide-bottom 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -165,19 +169,27 @@ body {
   100% {
     -webkit-transform: translateY(50%);
     transform: translateY(50%); } }
+.main {
+  width: 0;
+  border: 1px solid red;
+  overflow: hidden; }
+
 .profile {
   width: 550px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center; }
+  justify-content: center;
+  overflow: hidden;
+  display: none; }
   .profile__up {
     width: 90%;
     height: 80px;
     align-self: flex-end;
     display: flex;
     flex-direction: row;
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    margin-right: 23px; }
   .profile__triangleup {
     height: 100%;
     width: 18%;
@@ -186,30 +198,110 @@ body {
     background-image: url("../assets/images/linesbackground.png");
     background-repeat: repeat; }
     .profile__triangleup .redTriangle {
-      width: 35px;
-      height: 35px;
+      width: 26px;
+      height: 26px;
       -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
       clip-path: polygon(100% 0, 0% 100%, 100% 100%);
       background: #fe6402;
       border: 1px solid red;
-      margin-left: 50px;
-      margin-top: 20px; }
+      margin-left: 59px;
+      margin-top: 28px; }
       .profile__triangleup .redTriangle .fa-arrow-left {
         color: #fff;
-        margin-left: 20px;
-        margin-top: 15px;
-        font-size: 0.9em; }
+        margin-left: 15px;
+        margin-top: 10px;
+        font-size: 0.8em; }
+      .profile__triangleup .redTriangle:hover .fa-arrow-left {
+        animation: blink .4s infinite ease; }
   .profile__rightblockup {
     height: 100%;
     width: 82%;
     background-image: url("../assets/images/linesbackground.png");
     background-repeat: repeat;
     -webkit-clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
-    clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0); }
+    clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; }
+    .profile__rightblockup .trapezium {
+      width: 40%;
+      height: 10%;
+      background: rgba(36, 127, 224, 0.5);
+      margin-bottom: 5px;
+      align-self: center;
+      position: relative; }
+      .profile__rightblockup .trapezium:after {
+        position: absolute;
+        top: 0;
+        right: -8px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 8px 0 0;
+        border-color: rgba(36, 127, 224, 0.5) transparent transparent transparent; }
+      .profile__rightblockup .trapezium:before {
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        content: "";
+        border-style: solid;
+        border-width: 0 8px 8px 0;
+        border-color: transparent rgba(36, 127, 224, 0.5) transparent transparent; }
+    .profile__rightblockup .upbackground {
+      width: 98%;
+      height: 75%;
+      background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.5) 100%);
+      border-top-right-radius: 10px;
+      -webkit-border-top-right-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .profile__rightblockup .upbackground .buttonback {
+        font-family: Exo;
+        font-size: 0.8em;
+        color: #fff;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.5);
+        width: 30px;
+        padding: 9px 6px 9px 6px;
+        overflow: hidden;
+        white-space: nowrap; }
+        .profile__rightblockup .upbackground .buttonback div {
+          display: inline-block;
+          margin-right: 5px; }
+        .profile__rightblockup .upbackground .buttonback:hover div {
+          animation: moveLeft 0.3s linear; }
+      .profile__rightblockup .upbackground .header {
+        font-family: Exo;
+        font-size: 1.4em;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 9px 6px 9px 6px;
+        letter-spacing: 2px;
+        position: relative; }
+        .profile__rightblockup .upbackground .header:before {
+          position: absolute;
+          top: 0;
+          left: -90%;
+          width: 90%;
+          height: 100%;
+          content: "";
+          background: url("../assets/images/fire2.png");
+          background-size: cover; }
   .profile__info {
-    width: 100%;
+    box-sizing: border-box;
+    width: 104%;
     height: 280px;
-    background: rgba(95, 127, 138, 0.8); }
+    background: rgba(95, 127, 138, 0.8);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+    -webkit-clip-path: polygon(0 0, 92% 0%, 100% 18%, 100% 82%, 92% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 92% 0%, 100% 18%, 100% 82%, 92% 100%, 0 100%, 0 100%, 0 0); }
   .profile__down {
     width: 90%;
     height: 80px;
@@ -230,6 +322,399 @@ body {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 100%, 0 0);
     clip-path: polygon(0 0, 100% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 100%, 0 0);
     background-image: url("../assets/images/linesbackground.png");
+    margin-right: 23px;
+    background-repeat: repeat;
+    display: flex;
+    justify-content: center; }
+    .profile__rightblockdown .trapezium {
+      width: 40%;
+      height: 10%;
+      background: rgba(36, 127, 224, 0.5);
+      align-self: flex-end;
+      position: relative; }
+      .profile__rightblockdown .trapezium:after {
+        position: absolute;
+        top: 0;
+        right: -8px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 0 0 8px;
+        border-color: transparent transparent transparent rgba(36, 127, 224, 0.5); }
+      .profile__rightblockdown .trapezium:before {
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        content: "";
+        border-style: solid;
+        border-width: 0 0 8px 8px;
+        border-color: transparent transparent rgba(36, 127, 224, 0.5) transparent; }
+
+@keyframes moveLeft {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0); }
+  100% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-40px); } }
+.portfolio {
+  width: 550px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  display: none; }
+  .portfolio__up {
+    width: 90%;
+    height: 80px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    margin-right: 23px; }
+  .portfolio__triangleup {
+    height: 100%;
+    width: 18%;
+    -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    background-image: url("../assets/images/linesbackground.png");
     background-repeat: repeat; }
+    .portfolio__triangleup .redTriangle {
+      width: 26px;
+      height: 26px;
+      -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+      background: #fe6402;
+      border: 1px solid red;
+      margin-left: 59px;
+      margin-top: 28px; }
+      .portfolio__triangleup .redTriangle .fa-arrow-left {
+        color: #fff;
+        margin-left: 15px;
+        margin-top: 10px;
+        font-size: 0.8em; }
+      .portfolio__triangleup .redTriangle:hover .fa-arrow-left {
+        animation: blink .4s infinite ease; }
+  .portfolio__rightblockup {
+    height: 100%;
+    width: 82%;
+    background-image: url("../assets/images/linesbackground.png");
+    background-repeat: repeat;
+    -webkit-clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; }
+    .portfolio__rightblockup .trapezium {
+      width: 40%;
+      height: 10%;
+      background: rgba(36, 127, 224, 0.5);
+      margin-bottom: 5px;
+      align-self: center;
+      position: relative; }
+      .portfolio__rightblockup .trapezium:after {
+        position: absolute;
+        top: 0;
+        right: -8px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 8px 0 0;
+        border-color: rgba(36, 127, 224, 0.5) transparent transparent transparent; }
+      .portfolio__rightblockup .trapezium:before {
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        content: "";
+        border-style: solid;
+        border-width: 0 8px 8px 0;
+        border-color: transparent rgba(36, 127, 224, 0.5) transparent transparent; }
+    .portfolio__rightblockup .upbackground {
+      width: 98%;
+      height: 75%;
+      background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.5) 100%);
+      border-top-right-radius: 10px;
+      -webkit-border-top-right-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .portfolio__rightblockup .upbackground .buttonback {
+        font-family: Exo;
+        font-size: 0.8em;
+        color: #fff;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.5);
+        width: 30px;
+        padding: 9px 6px 9px 6px;
+        overflow: hidden;
+        white-space: nowrap; }
+        .portfolio__rightblockup .upbackground .buttonback div {
+          display: inline-block;
+          margin-right: 5px; }
+        .portfolio__rightblockup .upbackground .buttonback:hover div {
+          animation: moveLeft 0.3s linear; }
+      .portfolio__rightblockup .upbackground .header {
+        font-family: Exo;
+        font-size: 1.4em;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 9px 6px 9px 6px;
+        letter-spacing: 2px;
+        position: relative; }
+        .portfolio__rightblockup .upbackground .header:before {
+          position: absolute;
+          top: 0;
+          left: -90%;
+          width: 90%;
+          height: 100%;
+          content: "";
+          background: url("../assets/images/fire2.png");
+          background-size: cover; }
+  .portfolio__info {
+    box-sizing: border-box;
+    width: 104%;
+    height: 280px;
+    background: rgba(95, 127, 138, 0.8);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+    -webkit-clip-path: polygon(0 0, 92% 0%, 100% 18%, 100% 82%, 92% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 92% 0%, 100% 18%, 100% 82%, 92% 100%, 0 100%, 0 100%, 0 0); }
+  .portfolio__down {
+    width: 90%;
+    height: 80px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px; }
+  .portfolio__triangledown {
+    height: 100%;
+    width: 18%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    background-image: url("../assets/images/linesbackground.png");
+    background-repeat: repeat; }
+  .portfolio__rightblockdown {
+    height: 100%;
+    width: 82%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 100%, 0 0);
+    background-image: url("../assets/images/linesbackground.png");
+    margin-right: 23px;
+    background-repeat: repeat;
+    display: flex;
+    justify-content: center; }
+    .portfolio__rightblockdown .trapezium {
+      width: 40%;
+      height: 10%;
+      background: rgba(36, 127, 224, 0.5);
+      align-self: flex-end;
+      position: relative; }
+      .portfolio__rightblockdown .trapezium:after {
+        position: absolute;
+        top: 0;
+        right: -8px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 0 0 8px;
+        border-color: transparent transparent transparent rgba(36, 127, 224, 0.5); }
+      .portfolio__rightblockdown .trapezium:before {
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        content: "";
+        border-style: solid;
+        border-width: 0 0 8px 8px;
+        border-color: transparent transparent rgba(36, 127, 224, 0.5) transparent; }
+
+.contacts {
+  width: 550px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden; }
+  .contacts__up {
+    width: 90%;
+    height: 80px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+    margin-right: 23px; }
+  .contacts__triangleup {
+    height: 100%;
+    width: 18%;
+    -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    background-image: url("../assets/images/linesbackground.png");
+    background-repeat: repeat; }
+    .contacts__triangleup .redTriangle {
+      width: 26px;
+      height: 26px;
+      -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+      clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+      background: #fe6402;
+      border: 1px solid red;
+      margin-left: 59px;
+      margin-top: 28px; }
+      .contacts__triangleup .redTriangle .fa-arrow-left {
+        color: #fff;
+        margin-left: 15px;
+        margin-top: 10px;
+        font-size: 0.8em; }
+      .contacts__triangleup .redTriangle:hover .fa-arrow-left {
+        animation: blink .4s infinite ease; }
+  .contacts__rightblockup {
+    height: 100%;
+    width: 82%;
+    background-image: url("../assets/images/linesbackground.png");
+    background-repeat: repeat;
+    -webkit-clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 95% 0, 100% 20%, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 0);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; }
+    .contacts__rightblockup .trapezium {
+      width: 40%;
+      height: 10%;
+      background: rgba(36, 127, 224, 0.5);
+      margin-bottom: 5px;
+      align-self: center;
+      position: relative; }
+      .contacts__rightblockup .trapezium:after {
+        position: absolute;
+        top: 0;
+        right: -8px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 8px 0 0;
+        border-color: rgba(36, 127, 224, 0.5) transparent transparent transparent; }
+      .contacts__rightblockup .trapezium:before {
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        content: "";
+        border-style: solid;
+        border-width: 0 8px 8px 0;
+        border-color: transparent rgba(36, 127, 224, 0.5) transparent transparent; }
+    .contacts__rightblockup .upbackground {
+      width: 98%;
+      height: 75%;
+      background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 75%, rgba(255, 255, 255, 0.5) 100%);
+      border-top-right-radius: 10px;
+      -webkit-border-top-right-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center; }
+      .contacts__rightblockup .upbackground .buttonback {
+        font-family: Exo;
+        font-size: 0.8em;
+        color: #fff;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.5);
+        width: 30px;
+        padding: 9px 6px 9px 6px;
+        overflow: hidden;
+        white-space: nowrap; }
+        .contacts__rightblockup .upbackground .buttonback div {
+          display: inline-block;
+          margin-right: 5px; }
+        .contacts__rightblockup .upbackground .buttonback:hover div {
+          animation: moveLeft 0.3s linear; }
+      .contacts__rightblockup .upbackground .header {
+        font-family: Exo;
+        font-size: 1.4em;
+        color: #fff;
+        text-transform: uppercase;
+        padding: 9px 6px 9px 6px;
+        letter-spacing: 2px;
+        position: relative; }
+        .contacts__rightblockup .upbackground .header:before {
+          position: absolute;
+          top: 0;
+          left: -90%;
+          width: 90%;
+          height: 100%;
+          content: "";
+          background: url("../assets/images/fire2.png");
+          background-size: cover; }
+  .contacts__info {
+    box-sizing: border-box;
+    width: 104%;
+    height: 280px;
+    background: rgba(95, 127, 138, 0.8);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+    -webkit-clip-path: polygon(0 0, 92% 0%, 100% 18%, 100% 82%, 92% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 92% 0%, 100% 18%, 100% 82%, 92% 100%, 0 100%, 0 100%, 0 0); }
+  .contacts__down {
+    width: 90%;
+    height: 80px;
+    align-self: flex-end;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px; }
+  .contacts__triangledown {
+    height: 100%;
+    width: 18%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    background-image: url("../assets/images/linesbackground.png");
+    background-repeat: repeat; }
+  .contacts__rightblockdown {
+    height: 100%;
+    width: 82%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 100%, 0 0);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 100% 80%, 95% 100%, 0 100%, 0 100%, 0 0);
+    background-image: url("../assets/images/linesbackground.png");
+    margin-right: 23px;
+    background-repeat: repeat;
+    display: flex;
+    justify-content: center; }
+    .contacts__rightblockdown .trapezium {
+      width: 40%;
+      height: 10%;
+      background: rgba(36, 127, 224, 0.5);
+      align-self: flex-end;
+      position: relative; }
+      .contacts__rightblockdown .trapezium:after {
+        position: absolute;
+        top: 0;
+        right: -8px;
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 0 0 8px;
+        border-color: transparent transparent transparent rgba(36, 127, 224, 0.5); }
+      .contacts__rightblockdown .trapezium:before {
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 0;
+        height: 0;
+        content: "";
+        border-style: solid;
+        border-width: 0 0 8px 8px;
+        border-color: transparent transparent rgba(36, 127, 224, 0.5) transparent; }
 
 /*# sourceMappingURL=style.css.map */

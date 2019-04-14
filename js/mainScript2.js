@@ -157,7 +157,8 @@ container.classList.toggle("container__animate");
 
   }
 
-  // ROTATE OBJECT TO MENU BLOCKS
+// ROTATE OBJECT TO MENU BLOCKS
+//ROTATE RIGHT
   let stopLookRight;
   function lookingRight(eva) {
     resetControls();
@@ -172,7 +173,7 @@ container.classList.toggle("container__animate");
   }
 
 
-
+//ROTATE LEFT
   let stopLookLeft;
   function lookingLeft(eva) {
     resetControls();
@@ -186,6 +187,7 @@ container.classList.toggle("container__animate");
 
   }
 
+//ROTATE TO CENTER
   let stopLookCenter;
   function lookingCenter(eva) {
     resetControls();
@@ -203,6 +205,34 @@ container.classList.toggle("container__animate");
   setTimeout(function() {lookingCenter(mesh)}, 10500);
 
 
+
+// CHANGE WIDTH OF THE MAIN MENU
+let stopWidth;
+function changeWidth(div) {
+  //resetControls();
+  //window.cancelAnimationFrame(resetControls);
+  stopWidth = requestAnimationFrame( function() {changeWidth(main)} );
+  div.style.width = parseInt(div.style.width) + 50 + 'px';
+  if(parseInt(main.style.width) > 600){
+    div.style.width = 600 + 'px';
+    window.cancelAnimationFrame(stopWidth);
+  }
+}
+
+
+let main = document.getElementsByClassName("main")[0];
+main.style.width = 0;
+
+let profile = main.getElementsByClassName("profile")[0];
+let menuProfile = document.getElementsByClassName("menu__link")[0];
+
+
+menuProfile.addEventListener("click",function () {
+  changeWidth(main);
+  container.style.left = "80%";
+});
+//menu.addEventListener("click", rotor);
+//menu.addEventListener("click", function(){container.style.left = "80%"});
   let id;
   function rotor(e) {
     controls.object.position.z = 400;
@@ -218,6 +248,7 @@ container.classList.toggle("container__animate");
         mesh.rotation.y += .05;
         if(mesh.rotation.y >= 0.15) {
           mesh.rotation.y = 0.15;
+          //container.classList.toggle('rotated');
           window.cancelAnimationFrame(id);
           //container.style.position = "relative";
           //container.style.transition = "transform 3s";
