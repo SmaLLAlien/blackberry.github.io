@@ -7,6 +7,8 @@
 //function init() {
 
   let scene = new THREE.Scene();
+
+
 //scene.background = new THREE.Color( 0xffffff );
   let camera = new THREE.PerspectiveCamera( 75, 300 / 300, 0.1, 1000 );
 
@@ -15,6 +17,15 @@
 
   let container = document.getElementById("container");
   container.appendChild( renderer.domElement );
+
+
+let scene2 = new THREE.Scene();                                   //________________________________
+let renderer2 = new THREE.WebGLRenderer({ alpha: true });             //________________________________
+renderer2.setSize( 900, 500 );                                         //________________________________
+let spaceship = document.getElementById("spaceship");                 //________________________________
+spaceship.appendChild( renderer2.domElement );                        //________________________________
+let camera2 = new THREE.PerspectiveCamera( 75, 900 / 500, 0.1, 4000 ); //________________________________
+let controls2 = new THREE.OrbitControls(camera2, renderer2.domElement);
 
   let controls = new THREE.OrbitControls(camera, renderer.domElement);
 
@@ -29,6 +40,21 @@
   let backLight = new THREE.DirectionalLight(0xffffff, 1.0);
   backLight.position.set(300, 0, -300).normalize();
 
+
+
+let keyLight2 = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0); //________________________________
+keyLight2.position.set(-300, 0, 300); //________________________________
+
+let fillLight2 = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75); //________________________________
+fillLight2.position.set(300, 0, 300); //________________________________
+
+let backLight2 = new THREE.DirectionalLight(0xffffff, 1.0); //________________________________
+backLight2.position.set(300, 0, -300).normalize(); //________________________________
+scene2.add(keyLight2); //________________________________
+scene2.add(fillLight2); //________________________________
+scene2.add(backLight2); //________________________________
+
+camera2.position.z = 2500;
   scene.add(keyLight);
   scene.add(fillLight);
   scene.add(backLight);
@@ -53,14 +79,32 @@
     console.log(mesh.rotation);
   } );
 
+let mtlLoader = new THREE.MTLLoader();
+//mtlLoader.setTexturePath();
+mtlLoader.setPath('assets/models/');
+mtlLoader.load('3d-model.mtl', function (materials) {
+
+  materials.preload();
+
+  let objLoader = new THREE.OBJLoader();
+  objLoader.setMaterials(materials);
+  objLoader.setPath('assets/models/');
+  objLoader.load('3d-model.obj', function (object) {
+
+    scene2.add(object);
+    object.position.y -= 200;
+  });
+
+});
 
 
-  function animate() {
+
+function animate() {
     requestAnimationFrame( animate );
     controls.update();
     renderer.render( scene, camera );
 
-
+    renderer2.render( scene2, camera2 );
     //render();
     //container.addEventListener("click", rotor, false);
 

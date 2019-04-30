@@ -720,4 +720,8 @@ body {
         border-width: 0 0 8px 8px;
         border-color: transparent transparent rgba(36, 127, 224, 0.5) transparent; }
 
+#spaceship {
+  width: 900px;
+  height: 500px; }
+
 /*# sourceMappingURL=style.css.map */
