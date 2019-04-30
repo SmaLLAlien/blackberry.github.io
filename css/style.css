@@ -153,10 +153,11 @@ body {
   left: 50%;
   margin-left: -150px;
   margin-top: -150px;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out; }
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  z-index: 100; }
 
 .container__animate {
   -webkit-animation: slide-bottom 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -170,9 +171,11 @@ body {
     -webkit-transform: translateY(50%);
     transform: translateY(50%); } }
 .main {
-  width: 0;
+  width: 600px;
   border: 1px solid red;
-  overflow: hidden; }
+  overflow: hidden;
+  position: absolute;
+  z-index: 200; }
 
 .profile {
   width: 550px;

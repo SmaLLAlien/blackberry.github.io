@@ -216,7 +216,7 @@ function changeWidth(div) {
   //resetControls();
   //window.cancelAnimationFrame(resetControls);
   stopWidth = requestAnimationFrame( function() {changeWidth(main)} );
-  div.style.width = parseInt(div.style.width) + 50 + 'px';
+  div.style.width = parseInt(div.style.width) + 1 + 'px';
   if(parseInt(main.style.width) > 600){
     div.style.width = 600 + 'px';
     window.cancelAnimationFrame(stopWidth);
@@ -224,22 +224,27 @@ function changeWidth(div) {
 }
 
 // ROTATE OBJECT TO 90 DEG
-let stopRotateY;
-function rotateY(eva) {
+let stopRotateYX;
+function rotateYX(eva) {
   resetControls();
-  stopRotateY = window.requestAnimationFrame(function() {rotateY(mesh)});
+  stopRotateYX = window.requestAnimationFrame(function() {rotateYX(mesh)});
   eva.rotation.y -= 0.05;
-  if(eva.rotation.y < -1.07) {
-    eva.rotation.y = -1.07;
-    window.cancelAnimationFrame(stopRotateY);
+  if(eva.rotation.y < -0.67) {
+    eva.rotation.y = -0.67;
+    eva.rotation.x += 0.05;
+    if(eva.rotation.x > 0.5) {
+      eva.rotation.x = 0.5;
+      window.cancelAnimationFrame(stopRotateYX);
+    }
+
   }
 }
 
 // CHANGE OBJECT POSITION AND ROTATION AFTER CLICKING MENU BLOCKS, SHOW MAIN  BLOCK
 function reactToCLick() {
-  rotateY(mesh);
+  rotateYX(mesh);
   changeWidth(main);
-  container.style.left = "80%";
+  container.style.left = "75%";
 }
 
 
