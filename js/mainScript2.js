@@ -76,9 +76,9 @@ camera2.position.z = 2500;
 
     mesh.position.set(10, -30, 1);
     mesh.rotation.set(0.2, 0, 0);
-    console.log(mesh.rotation);
   } );
 
+let mesh2;
 let mtlLoader = new THREE.MTLLoader();
 //mtlLoader.setTexturePath();
 mtlLoader.setPath('assets/models/');
@@ -90,9 +90,9 @@ mtlLoader.load('3d-model.mtl', function (materials) {
   objLoader.setMaterials(materials);
   objLoader.setPath('assets/models/');
   objLoader.load('3d-model.obj', function (object) {
-
-    scene2.add(object);
-    object.position.y -= 200;
+    mesh2 = object;
+    scene2.add(mesh2);
+    mesh2.position.y -= 200;
   });
 
 });
@@ -331,9 +331,7 @@ function reactToCLick() {
   */
   function back() {
     main.style.width = 0;
-
   }
-
   buttonback.addEventListener("click", back);
 }
 
@@ -343,12 +341,18 @@ menuProfile.addEventListener("click", reactToCLick);
 menuPortfolio.addEventListener("click", reactToCLick);
 menuContacts.addEventListener("click", reactToCLick);
 
-function back() {
-  main.style.width = 0;
 
+let stopRotateY;
+function rotateY(object) {
+  resetControls();
+  stopRotateY = window.requestAnimationFrame(function() {rotateY(mesh2)});
+  object.rotation.y += 0.05;
+  //window.cancelAnimationFrame(stopRotateY);
 }
 
-buttonback.addEventListener("click", back);
+
+//rotateY(mesh2);
+
 //menu.addEventListener("click", rotor);
 //menu.addEventListener("click", function(){container.style.left = "80%"});
   let id;
