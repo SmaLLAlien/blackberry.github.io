@@ -202,7 +202,7 @@ body {
 
 #container {
   width: 300px;
-  height: 310px;
+  height: 300px;
   position: absolute;
   //top: -300px;
   left: 50%;
@@ -213,6 +213,7 @@ body {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   z-index: 100;
+  border: 1px solid red;
 }
 
 
@@ -250,7 +251,7 @@ body {
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  display: none;
+
   //margin-right: -14px;
 
   &__up {
@@ -727,7 +728,7 @@ body {
   justify-content: center;
   overflow: hidden;
   //margin-right: -14px;
-
+  display: none;
 
   &__up {
     width: 90%;

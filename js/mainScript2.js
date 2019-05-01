@@ -120,7 +120,13 @@ let main = document.getElementsByClassName("main")[0];
 main.style.width = 0;
 
 let profile = main.getElementsByClassName("profile")[0];
+let portfolio = main.getElementsByClassName("portfolio")[0];
+let contacts = main.getElementsByClassName("contacts")[0];
+//let shoutbox = main.getElementsByClassName("shoutbox")[0];
 let menuProfile = document.getElementsByClassName("menu__link")[0];
+let menuPortfolio = document.getElementsByClassName("menu__link")[1];
+let menuContacts = document.getElementsByClassName("menu__link")[2];
+//let menuShoutbox = document.getElementsByClassName("menu__link")[3];
 
 // get menu block
   let menu = document.getElementsByClassName("menu")[0];
@@ -260,7 +266,7 @@ function changeWidth(div) {
   //resetControls();
   //window.cancelAnimationFrame(resetControls);
   stopWidth = requestAnimationFrame( function() {changeWidth(main)} );
-  div.style.width = parseInt(div.style.width) + 1 + 'px';
+  div.style.width = parseInt(div.style.width) + 50 + 'px';
   if(parseInt(main.style.width) > 600){
     div.style.width = 600 + 'px';
     window.cancelAnimationFrame(stopWidth);
@@ -289,11 +295,53 @@ function reactToCLick() {
   rotateYX(mesh);
   changeWidth(main);
   container.style.left = "75%";
+  console.log(event, "event");
+  console.log(event.target, "event.target");
+  if(event.target == menuProfile) {
+    profile.style.display = "flex";
+    portfolio.style.display = "none";
+    contacts.style.display = "none";
+    //shoutbox.style.display = "none";
+    console.log(1);
+  }
+  if(event.target == menuPortfolio) {
+    profile.style.display = "none";
+    portfolio.style.display = "flex";
+    contacts.style.display = "none";
+    //shoutbox.style.display = "none";
+    console.log(2);
+  }
+  if(event.target == menuContacts) {
+    profile.style.display = "none";
+    portfolio.style.display = "none";
+    contacts.style.display = "flex";
+    //shoutbox.style.display = "none";
+    console.log(3);
+  }
+/*
+  if(event.target == shoutbox) {
+    profile.style.display = "none";
+    portfolio.style.display = "none";
+    contacts.style.display = "none";
+    //shoutbox.style.display = "flex";
+    console.log(4);
+  }
+  */
 }
 
 
 
 menuProfile.addEventListener("click", reactToCLick);
+menuPortfolio.addEventListener("click", reactToCLick);
+menuContacts.addEventListener("click", reactToCLick);
+
+let buttonback = document.getElementsByClassName("buttonback")[0];
+function back() {
+  main.style.width = 0;
+
+}
+
+buttonback.addEventListener("click", back);
 //menu.addEventListener("click", rotor);
 //menu.addEventListener("click", function(){container.style.left = "80%"});
   let id;
