@@ -121,6 +121,7 @@ body {
     overflow: hidden;
 
     .text--left {
+      width: 90%;
       padding: 10px;
       font-family: Exo;
       font-size: 1em;
@@ -129,6 +130,7 @@ body {
       order: 1;
     }
     .text--right {
+      width: 90%;
       padding: 10px;
       font-family: Exo;
       font-size: 1em;
@@ -137,6 +139,7 @@ body {
       order: 2;
     }
     .arrow--left {
+      width: 10%;
       padding: 10px;
       background: rgba(255,255,255, 0.8);
       order: 2;
@@ -146,6 +149,7 @@ body {
 
     }
     .arrow--right {
+      width: 10%;
       padding: 10px;
       background: rgba(255,255,255, 0.8);
       order:1;
@@ -235,6 +239,7 @@ body {
 
 .main {
   width: 600px;
+  height: 450px;
   border: 1px solid red;
   overflow: hidden;
   position: absolute;
@@ -496,7 +501,7 @@ body {
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-  display: none;
+  //display: none;
 
   &__up {
     width: 90%;
@@ -728,7 +733,7 @@ body {
   justify-content: center;
   overflow: hidden;
   //margin-right: -14px;
-  display: none;
+  //display: none;
 
   &__up {
     width: 90%;

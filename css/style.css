@@ -95,6 +95,7 @@ body {
     background: rgba(255, 255, 255, 0.5);
     overflow: hidden; }
     .menu__link .text--left {
+      width: 90%;
       padding: 10px;
       font-family: Exo;
       font-size: 1em;
@@ -102,6 +103,7 @@ body {
       text-transform: uppercase;
       order: 1; }
     .menu__link .text--right {
+      width: 90%;
       padding: 10px;
       font-family: Exo;
       font-size: 1em;
@@ -109,12 +111,14 @@ body {
       text-transform: uppercase;
       order: 2; }
     .menu__link .arrow--left {
+      width: 10%;
       padding: 10px;
       background: rgba(255, 255, 255, 0.8);
       order: 2; }
       .menu__link .arrow--left .fa-arrow-left {
         color: #5c8dae; }
     .menu__link .arrow--right {
+      width: 10%;
       padding: 10px;
       background: rgba(255, 255, 255, 0.8);
       order: 1; }
@@ -173,6 +177,7 @@ body {
     transform: translateY(50%); } }
 .main {
   width: 600px;
+  height: 450px;
   border: 1px solid red;
   overflow: hidden;
   position: absolute;
@@ -369,8 +374,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
-  display: none; }
+  overflow: hidden; }
   .portfolio__up {
     width: 90%;
     height: 80px;
@@ -548,8 +552,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
-  display: none; }
+  overflow: hidden; }
   .contacts__up {
     width: 90%;
     height: 80px;

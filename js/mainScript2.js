@@ -119,6 +119,7 @@ container.classList.toggle("container__animate");
 let main = document.getElementsByClassName("main")[0];
 main.style.width = 0;
 
+let buttonback = document.getElementsByClassName("buttonback")[0];
 let profile = main.getElementsByClassName("profile")[0];
 let portfolio = main.getElementsByClassName("portfolio")[0];
 let contacts = main.getElementsByClassName("contacts")[0];
@@ -295,28 +296,29 @@ function reactToCLick() {
   rotateYX(mesh);
   changeWidth(main);
   container.style.left = "75%";
-  console.log(event, "event");
-  console.log(event.target, "event.target");
-  if(event.target == menuProfile) {
+  let buttonback;
+  let target = event.target;
+  console.log(target.parentNode, "parent");
+  if(target.parentNode == menuProfile) {
     profile.style.display = "flex";
     portfolio.style.display = "none";
     contacts.style.display = "none";
     //shoutbox.style.display = "none";
-    console.log(1);
+    buttonback = document.getElementsByClassName("buttonback")[0];
   }
-  if(event.target == menuPortfolio) {
+  if(target.parentNode == menuPortfolio) {
     profile.style.display = "none";
     portfolio.style.display = "flex";
     contacts.style.display = "none";
     //shoutbox.style.display = "none";
-    console.log(2);
+    buttonback = document.getElementsByClassName("buttonback")[1];
   }
-  if(event.target == menuContacts) {
+  if(target.parentNode == menuContacts) {
     profile.style.display = "none";
     portfolio.style.display = "none";
     contacts.style.display = "flex";
     //shoutbox.style.display = "none";
-    console.log(3);
+    buttonback = document.getElementsByClassName("buttonback")[2];
   }
 /*
   if(event.target == shoutbox) {
@@ -327,6 +329,12 @@ function reactToCLick() {
     console.log(4);
   }
   */
+  function back() {
+    main.style.width = 0;
+
+  }
+
+  buttonback.addEventListener("click", back);
 }
 
 
@@ -335,7 +343,6 @@ menuProfile.addEventListener("click", reactToCLick);
 menuPortfolio.addEventListener("click", reactToCLick);
 menuContacts.addEventListener("click", reactToCLick);
 
-let buttonback = document.getElementsByClassName("buttonback")[0];
 function back() {
   main.style.width = 0;
 
