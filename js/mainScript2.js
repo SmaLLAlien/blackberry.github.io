@@ -21,10 +21,10 @@
 
 let scene2 = new THREE.Scene();                                   //________________________________
 let renderer2 = new THREE.WebGLRenderer({ alpha: true });             //________________________________
-renderer2.setSize( 900, 500 );                                         //________________________________
+renderer2.setSize( 600, 400 );                                         //________________________________
 let spaceship = document.getElementById("spaceship");                 //________________________________
 spaceship.appendChild( renderer2.domElement );                        //________________________________
-let camera2 = new THREE.PerspectiveCamera( 75, 900 / 500, 0.1, 4000 ); //________________________________
+let camera2 = new THREE.PerspectiveCamera( 75, 600 / 400, 0.1, 3000 ); //________________________________
 let controls2 = new THREE.OrbitControls(camera2, renderer2.domElement);
 
   let controls = new THREE.OrbitControls(camera, renderer.domElement);
@@ -43,18 +43,18 @@ let controls2 = new THREE.OrbitControls(camera2, renderer2.domElement);
 
 
 let keyLight2 = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0); //________________________________
-keyLight2.position.set(-300, 0, 300); //________________________________
+keyLight2.position.set(-600, 0, 600); //________________________________
 
 let fillLight2 = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75); //________________________________
-fillLight2.position.set(300, 0, 300); //________________________________
+fillLight2.position.set(600, 0, 600); //________________________________
 
 let backLight2 = new THREE.DirectionalLight(0xffffff, 1.0); //________________________________
-backLight2.position.set(300, 0, -300).normalize(); //________________________________
+backLight2.position.set(600, 0, -600).normalize(); //________________________________
 scene2.add(keyLight2); //________________________________
 scene2.add(fillLight2); //________________________________
 scene2.add(backLight2); //________________________________
 
-camera2.position.z = 2500;
+camera2.position.z = 2000;
   scene.add(keyLight);
   scene.add(fillLight);
   scene.add(backLight);
@@ -92,7 +92,8 @@ mtlLoader.load('3d-model.mtl', function (materials) {
   objLoader.load('3d-model.obj', function (object) {
     mesh2 = object;
     scene2.add(mesh2);
-    mesh2.position.y -= 200;
+    mesh2.position.y -= 150;
+    mesh2.rotation.x = 0.1;
   });
 
 });
@@ -342,18 +343,27 @@ menuPortfolio.addEventListener("click", reactToCLick);
 menuContacts.addEventListener("click", reactToCLick);
 
 
+
 let stopRotateY;
 function rotateY(object) {
   resetControls();
   stopRotateY = window.requestAnimationFrame(function() {rotateY(mesh2)});
-  object.rotation.y += 0.05;
+  if(object.rotation.z > -  1.5) {
+    object.rotation.z -= .05;
+    object.rotation.y -= 0.01;
+    spaceship.style.height = 600 + "px";
+    renderer2.setSize( 600, 600 );
+  }
+
+
+
   //window.cancelAnimationFrame(stopRotateY);
 }
 
 
 //rotateY(mesh2);
 
-//menu.addEventListener("click", rotor);
+spaceship.addEventListener("click", function() {spaceship.classList.toggle("spaceship__animate")});
 //menu.addEventListener("click", function(){container.style.left = "80%"});
   let id;
   function rotor(e) {
@@ -411,246 +421,4 @@ function rotateY(object) {
  }
 
 
-
-// написать анимацию выхода блока с обьектом на экран
-
-// написать функцию анимации поворота на блоки меню во время первого появления
-
-// написать анимацию вращения
-
-
-// создать блок с фотками.
-
-
-
- /*
- container.addEventListener("click", rotor);
- function rotor(target) {
- mesh.rotation.z = -1;
- mesh.rotation.x = 1;
- //mesh.rotation.x = 180 * 180 / 3.14;
- }
-
- */
-/*
- function render() {
- if(controls.object.position.x !==0) {
- if(controls.object.position.x > 0 ) {
- while(controls.object.position.x > 0) {
- controls.object.position.x -= 0.1;
- }
- }
- else {
- while(controls.object.position.x < 0) {
- controls.object.position.y += 0.1;
- }
- }
-
-
- }
- if(controls.object.position.y !== 2.45) {
- if(controls.object.position.y > 2.45 ) {
- while(controls.object.position.y > 2.45) {
- controls.object.position.y -= 0.1;
- }
- }
- else {
- while(controls.object.position.y < 2.45) {
- controls.object.position.y += 0.1;
- }
- }
- }
- if(controls.object.position.z !==350) {
- if(controls.object.position.z > 350 ) {
- while(controls.object.position.z > 350) {
- controls.object.position.z -= 0.1;
- }
-
- }
- else {
- while(controls.object.position.z < 350) {
- controls.object.position.z += 0.1;
- }
- }
- }
- }
- */
-
-
-
-
-
-
-
-
-
-
-
- window.addEventListener( "click", onDocumentMouseMove, false );
-
-
-
- var selectedObject = null;
- function onDocumentMouseMove( event ) {
-
- event.preventDefault();
- if ( selectedObject ) {
-
- selectedObject.position.set(  5, 5, 3 );
- selectedObject = null;
-
- }
-
- var intersects = getIntersects( event.layerX, event.layerY );
- if ( intersects.length > 0 ) {
-
- var res = intersects.filter( function ( res ) {
-
- return res && res.object;
-
- } )[ 0 ];
-
- if ( res && res.object ) {
-
- selectedObject = res.object;
- selectedObject.rotation.z += 10;
-
- }
-
- }
-
- }
- var raycaster = new THREE.Raycaster();
- var mouseVector = new THREE.Vector3();
-
- function getIntersects( x, y ) {
-
- x = ( x / window.innerWidth ) * 2 - 1;
- y = - ( y / window.innerHeight ) * 2 + 1;
-
- mouseVector.set( x, y, 0.5 );
- raycaster.setFromCamera( mouseVector, camera );
-
- return raycaster.intersectObject( mesh, true );
-
- }
- /*
- https://www.pericror.com/software/creating-3d-objects-with-click-handlers-using-three-js/
- https://github.com/mrdoob/three.js/blob/3510fdd91725f7681db845efd889c5e29e6e7446/examples/webgl_loader_obj_mtl.html
-
- three.js/examples/webgl_loader_obj_mtl.html IN CLONED
-
- http://jeromeetienne.github.io/threex.domevents/examples/demo.html    SOME DEMO
-
- var scene = new THREE.Scene();
-
- var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
- camera.position.z = 300;
-
- var renderer = new THREE.WebGLRenderer();
- renderer.setSize( window.innerWidth, window.innerHeight );
- document.body.appendChild( renderer.domElement );
-
- var controls = new THREE.OrbitControls(camera, renderer.domElement);
- controls.enableDamping = true;
- controls.dampingFactor = 0.25;
- controls.enableZoom = true;
-
- var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
- keyLight.position.set(-100, 0, 100);
-
- var fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75);
- fillLight.position.set(100, 0, 100);
-
- var backLight = new THREE.DirectionalLight(0xffffff, 1.0);
- backLight.position.set(100, 0, -100).normalize();
-
- scene.add(keyLight);
- scene.add(fillLight);
- scene.add(backLight);
-
- var mtlLoader = new THREE.MTLLoader();
- mtlLoader.setTexturePath('assets/');
- mtlLoader.setPath('assets/');
- mtlLoader.load('IronMan.mtl', function (materials) {
-
- materials.preload();
-
- var objLoader = new THREE.OBJLoader();
- objLoader.setMaterials(materials);
- objLoader.setPath('assets/');
- objLoader.load('IronMan.obj', function (object) {
-
- scene.add(object);
- object.position.y -= 60;
-
- });
-
- });
-
- var animate = function () {
- requestAnimationFrame( animate );
- controls.update();
- renderer.render(scene, camera);
- };
-
- animate();
- /*
- var scene = new THREE.Scene();
- var camera = new THREE.PerspectiveCamera( 75, 1920 / 1080, 0.1, 1000 );
-
- var renderer = new THREE.WebGLRenderer();
- renderer.setSize( 1920, 1080 );
-
- let container = document.getElementById("container");
- container.appendChild( renderer.domElement );
-
- var geometry = new THREE.BoxGeometry( 1, 1, 1 );
- var material = new THREE.MeshBasicMaterial( { color: 0x000000 } );
- var cube = new THREE.Mesh( geometry, material );
- scene.add( cube );
-
- camera.position.z = 25;
-
- var mtlLoader = new THREE.MTLLoader();
- mtlLoader.setTexturePath('/assets/');
- mtlLoader.setPath('/assets/');
- mtlLoader.load('IronMan.mtl', function (materials) {
-
- materials.preload();
-
- var objLoader = new THREE.OBJLoader();
- objLoader.setMaterials(materials);
- objLoader.setPath('/assets/');
- objLoader.load('IronMan.obj', function (object) {
-
- scene.add(object);
- object.position.y -= 60;
-
- });
-
- });
-
-
-
- function animate() {
- requestAnimationFrame( animate );
- cube.rotation.x += 0.01;
- cube.rotation.y += 0.01;
- renderer.render( scene, camera );
- }
- animate();
- /*
- addEventListener("click",disp);
- function disp() {
- let body = document.getElementsByTagName("body");
- let container = document.getElementById("container");
- if(container.style.display == "none"){
- container.style.display = "block"
- }
- else {
- container.style.display = "none"
- }
-
- }
- */
+*/
