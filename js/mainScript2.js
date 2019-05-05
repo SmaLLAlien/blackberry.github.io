@@ -279,28 +279,26 @@ function changeWidth(div) {
 let stopRotateYX;
 
 function rotateYX(eva) {
-  let counterx = 0;
-  let countery = 0;
-  let counterz = 0;
+  let counter = 0;
   resetControls();
   stopRotateYX = window.requestAnimationFrame(function() {rotateYX(mesh)});
   if(eva.rotation.z > 0) {
     eva.rotation.z = 0;
-    counterz++;
+    counter++;
   }
   if(eva.rotation.x < 0.2) {
     eva.rotation.x = 0.2;
-    counterx++;
+    counter++;
   }
   if( eva.rotation.y < 0) {
     eva.rotation.y = 0;
-    countery++;
+    counter++;
   }
   eva.rotation.z += 0.05;
   eva.rotation.x -= 0.05;
   eva.rotation.y -= 0.05;
 
-  if( counterz > 0 && counterx > 0 && countery > 0){
+  if( counter >= 3){
     window.cancelAnimationFrame(stopRotateYX);
   }
   /*
@@ -372,14 +370,14 @@ function openMainMenu(event) {
   setTimeout(function() {
     spaceship.classList.toggle("spaceship__animate");
     container.style.left = "40%";
-    rotor();
+    layDown();
 
   }, 500);
   setTimeout(function() {
     container.classList.toggle("container__left");
     showMainSection(target);
     setTimeout(rotateYX, 500, mesh);
-  }, 2000);
+  }, 1500);
 }
 
 menuProfile.addEventListener("click", openMainMenu);
@@ -409,28 +407,49 @@ function rotateY(object) {
 
 //spaceship.addEventListener("click", function() {container.classList.toggle("container__left")});
 //menu.addEventListener("click", function(){container.style.left = "80%"});
-  let id;
-  function rotor() {
+  let stopLayDown;
+  function layDown(eva) {
+    let counter = 0;
+
     resetControls();
-    id = requestAnimationFrame( rotor );
-    mesh.rotation.z += -.05 ;
-    if( mesh.rotation.z <= -1.55) {
-      mesh.rotation.z = -1.55;
-      mesh.rotation.x += .05 ;
-      if( mesh.rotation.x >= 1.3) {
-        mesh.rotation.x = 1.3 ;
-        mesh.rotation.y += .05;
-        if(mesh.rotation.y >= 0.15) {
-          mesh.rotation.y = 0.15;
+    stopLayDown = requestAnimationFrame( function() {layDown(mesh)} );
+    if( eva.rotation.z <= -1.55) {
+      eva.rotation.z = -1.55;
+      counter++;
+    }
+    if( eva.rotation.x >= 1.3) {
+      eva.rotation.x = 1.3;
+      counter++;
+    }
+    if(eva.rotation.y >= 0.15) {
+      eva.rotation.y = 0.15;
+      counter++;
+    }
+    if(counter >= 3) {
+      window.cancelAnimationFrame(stopLayDown);
+    }
+    eva.rotation.z += -.05 ;
+    eva.rotation.y += .05;
+    eva.rotation.x += .05 ;
+    /*
+    eva.rotation.z += -.05 ;
+    if( eva.rotation.z <= -1.55) {
+      eva.rotation.z = -1.55;
+      eva.rotation.x += .05 ;
+      if( eva.rotation.x >= 1.3) {
+        eva.rotation.x = 1.3 ;
+        eva.rotation.y += .05;
+        if(eva.rotation.y >= 0.15) {
+          eva.rotation.y = 0.15;
           //mesh.position.y = 1;
           //container.classList.toggle('rotated');
-          window.cancelAnimationFrame(id);
+          window.cancelAnimationFrame(stopLayDown);
           //container.style.position = "relative";
           //container.style.transition = "transform 3s";
           //container.transform = "translate(25, 25)"
         }
       }
-    }
+    } */
 
 
     //console.log(mesh.rotation.z, "mesh.rotation.z");
