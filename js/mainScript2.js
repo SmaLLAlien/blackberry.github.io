@@ -43,13 +43,13 @@ let controls2 = new THREE.OrbitControls(camera2, renderer2.domElement);
 
 
 let keyLight2 = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0); //________________________________
-keyLight2.position.set(-600, 0, 600); //________________________________
+keyLight2.position.set(-300, 0, 300); //________________________________
 
 let fillLight2 = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75); //________________________________
-fillLight2.position.set(600, 0, 600); //________________________________
+fillLight2.position.set(300, 0, 300); //________________________________
 
 let backLight2 = new THREE.DirectionalLight(0xffffff, 1.0); //________________________________
-backLight2.position.set(600, 0, -600).normalize(); //________________________________
+backLight2.position.set(300, 0, -300).normalize(); //________________________________
 scene2.add(keyLight2); //________________________________
 scene2.add(fillLight2); //________________________________
 scene2.add(backLight2); //________________________________
@@ -145,9 +145,9 @@ let menuContacts = document.getElementsByClassName("menu__link")[2];
     if(elem.style.opacity == 0) {
       return  elem.style.opacity = 1;
     }
-    else {
+    //else {
       return  elem.style.opacity = 0;
-    }
+    //}
   }
 
 // call change opacity with interval
@@ -268,37 +268,42 @@ function changeWidth(div) {
   //resetControls();
   //window.cancelAnimationFrame(resetControls);
   stopWidth = requestAnimationFrame( function() {changeWidth(main)} );
-  div.style.width = parseInt(div.style.width) + 50 + 'px';
+  div.style.width = parseInt(div.style.width) + 20 + 'px';
   if(parseInt(main.style.width) > 600){
     div.style.width = 600 + 'px';
     window.cancelAnimationFrame(stopWidth);
   }
 }
 
-// ROTATE OBJECT TO 90 DEG
+// ROTATE OBJECT TO STRAIGHT POSITION
 let stopRotateYX;
 function rotateYX(eva) {
   resetControls();
   stopRotateYX = window.requestAnimationFrame(function() {rotateYX(mesh)});
-  eva.rotation.y -= 0.05;
-  if(eva.rotation.y < -0.67) {
-    eva.rotation.y = -0.67;
-    eva.rotation.x += 0.05;
-    if(eva.rotation.x > 0.5) {
-      eva.rotation.x = 0.5;
-      window.cancelAnimationFrame(stopRotateYX);
+  eva.rotation.z += 0.05;
+  if(eva.rotation.z > 0) {
+    eva.rotation.z = 0;
+    eva.rotation.x -= 0.05;
+    if(eva.rotation.x < 0.2) {
+      eva.rotation.x = 0.2;
+      eva.rotation.y -= 0.05;
+      if( eva.rotation.y < 0) {
+        eva.rotation.y = 0;
+        window.cancelAnimationFrame(stopRotateYX);
+      }
+
     }
 
   }
 }
 
 // CHANGE OBJECT POSITION AND ROTATION AFTER CLICKING MENU BLOCKS, SHOW MAIN  BLOCK
-function reactToCLick() {
-  rotateYX(mesh);
+function showMainSection(target) {
+
   changeWidth(main);
-  container.style.left = "75%";
+  //container.style.left = "75%";
   let buttonback;
-  let target = event.target;
+  //let target = event.target;
   console.log(target.parentNode, "parent");
   if(target.parentNode == menuProfile) {
     profile.style.display = "flex";
@@ -338,11 +343,28 @@ function reactToCLick() {
 
 
 
-menuProfile.addEventListener("click", reactToCLick);
-menuPortfolio.addEventListener("click", reactToCLick);
-menuContacts.addEventListener("click", reactToCLick);
+menuProfile.addEventListener("click", function (event) {
+  let target = event.target;
+  console.log(target.parentNode, "parent");
+  menu.style.display = "none";
+  setTimeout(function() {
+    spaceship.classList.toggle("spaceship__animate");
+    container.style.left = "40%";
+    rotor();
 
+  }, 500);
+  setTimeout(function() {
+    container.classList.toggle("container__left");
+    showMainSection(target);
+    setTimeout(rotateYX, 500, mesh);
+  }, 2000);
+  //showMainSection();
 
+});
+menuPortfolio.addEventListener("click", showMainSection);
+menuContacts.addEventListener("click", showMainSection);
+
+/*
 
 let stopRotateY;
 function rotateY(object) {
@@ -360,17 +382,15 @@ function rotateY(object) {
   //window.cancelAnimationFrame(stopRotateY);
 }
 
-
+*/
 //rotateY(mesh2);
 
-spaceship.addEventListener("click", function() {spaceship.classList.toggle("spaceship__animate")});
+//spaceship.addEventListener("click", function() {container.classList.toggle("container__left")});
 //menu.addEventListener("click", function(){container.style.left = "80%"});
   let id;
-  function rotor(e) {
-    controls.object.position.z = 400;
-    controls.object.position.x = 0;
-    controls.object.position.y = 2.45;
-    //mesh.rotation.set(0.2, 0, 0);
+  function rotor() {
+    resetControls();
+    id = requestAnimationFrame( rotor );
     mesh.rotation.z += -.05 ;
     if( mesh.rotation.z <= -1.55) {
       mesh.rotation.z = -1.55;
@@ -380,6 +400,7 @@ spaceship.addEventListener("click", function() {spaceship.classList.toggle("spac
         mesh.rotation.y += .05;
         if(mesh.rotation.y >= 0.15) {
           mesh.rotation.y = 0.15;
+          //mesh.position.y = 1;
           //container.classList.toggle('rotated');
           window.cancelAnimationFrame(id);
           //container.style.position = "relative";
@@ -389,7 +410,7 @@ spaceship.addEventListener("click", function() {spaceship.classList.toggle("spac
       }
     }
 
-    id = requestAnimationFrame( rotor );
+
     //console.log(mesh.rotation.z, "mesh.rotation.z");
 
 

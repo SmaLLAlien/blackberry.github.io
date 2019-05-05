@@ -175,6 +175,17 @@ body {
   100% {
     -webkit-transform: translateY(50%);
     transform: translateY(50%); } }
+.container__left {
+  -webkit-animation: slide-left 0.3s linear both;
+  animation: slide-left 0.3s linear both; }
+
+@keyframes slide-left {
+  0% {
+    margin-top: 0; }
+  100% {
+    -webkit-transform: translate(175%);
+    transform: translate(175%);
+    margin-top: 0; } }
 .main {
   width: 600px;
   height: 450px;
@@ -731,7 +742,7 @@ body {
   bottom: 5%;
   left: 50%;
   margin-left: -300px;
-  z-index: 100;
+  z-index: 300;
   border: 1px solid red;
   transition: transform .8s ease-in-out; }
 
