@@ -92,8 +92,8 @@ mtlLoader.load('3d-model.mtl', function (materials) {
   objLoader.load('3d-model.obj', function (object) {
     mesh2 = object;
     scene2.add(mesh2);
-    mesh2.position.y -= 150;
-    mesh2.rotation.x = 0.1;
+    mesh2.position.y = 80;
+    mesh2.rotation.x = 0.2;
   });
 
 });
@@ -220,7 +220,7 @@ let menuContacts = document.getElementsByClassName("menu__link")[2];
     resetControls();
     //window.cancelAnimationFrame(resetControls);
     stopLookRight = requestAnimationFrame( function() {lookingRight(mesh)} );
-    eva.rotation.y += .01;
+    eva.rotation.y += .03;
     if(eva.rotation.y > 0.6){
       eva.rotation.y = 0.6;
       blink(menuChildren[1]);
@@ -234,7 +234,7 @@ let menuContacts = document.getElementsByClassName("menu__link")[2];
   function lookingLeft(eva) {
     resetControls();
     stopLookLeft = requestAnimationFrame( function() {lookingLeft(mesh)} );
-    eva.rotation.y -= .01;
+    eva.rotation.y -= .03;
     if(eva.rotation.y < -0.6){
       eva.rotation.y = -0.6;
       blink(menuChildren[0]);
@@ -248,7 +248,7 @@ let menuContacts = document.getElementsByClassName("menu__link")[2];
   function lookingCenter(eva) {
     resetControls();
     stopLookCenter = requestAnimationFrame( function() {lookingCenter(mesh)} );
-    eva.rotation.y += .01;
+    eva.rotation.y += .03;
     if(eva.rotation.y < 0.2 && eva.rotation.y > -0.2){
       eva.rotation.y = 0;
       window.cancelAnimationFrame(stopLookCenter);
@@ -256,9 +256,9 @@ let menuContacts = document.getElementsByClassName("menu__link")[2];
 
   }
 
-  setTimeout(function() {lookingRight(mesh)},4000 );
-  setTimeout(function() {lookingLeft(mesh)}, 6500);
-  setTimeout(function() {lookingCenter(mesh)}, 10500);
+  setTimeout(function() {lookingRight(mesh)},2500 ); //4000
+  setTimeout(function() {lookingLeft(mesh)}, 4000); //6000
+  setTimeout(function() {lookingCenter(mesh)}, 6000); //10500
 
 
 
@@ -268,7 +268,7 @@ function changeWidth(div) {
   //resetControls();
   //window.cancelAnimationFrame(resetControls);
   stopWidth = requestAnimationFrame( function() {changeWidth(main)} );
-  div.style.width = parseInt(div.style.width) + 20 + 'px';
+  div.style.width = parseInt(div.style.width) + 18 + 'px';
   if(parseInt(main.style.width) > 600){
     div.style.width = 600 + 'px';
     window.cancelAnimationFrame(stopWidth);

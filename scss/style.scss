@@ -223,8 +223,8 @@ body {
 
 
 .container__animate {
-  -webkit-animation: slide-bottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide-bottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: slide-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
  }
 
 @keyframes slide-bottom {
@@ -239,8 +239,8 @@ body {
 }
 
 .container__left {
-  -webkit-animation: slide-left 0.3s linear both;
-  animation: slide-left 0.3s linear both;
+  -webkit-animation: slide-left 0.5s linear both;
+  animation: slide-left 0.5s linear both;
 }
 
 @keyframes slide-left {
@@ -975,7 +975,7 @@ margin-top: 0;
   width: 600px;
   height: 400px;
   position: absolute;
-  bottom: 5%;
+  bottom: 2%;
   left: 50%;
   margin-left: -300px;
   z-index: 300;
@@ -991,7 +991,7 @@ margin-top: 0;
 
 @keyframes slide {
   100% {
-    -webkit-transform: translate(-57%, -60%) rotate(90deg);
-    transform: translate(-57%, -60%) rotate(90deg);
+    -webkit-transform: translate(-65%, -65%) rotate(90deg);
+    transform: translate(-65%, -65%) rotate(90deg);
   }
 }
