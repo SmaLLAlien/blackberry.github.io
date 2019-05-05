@@ -277,9 +277,33 @@ function changeWidth(div) {
 
 // ROTATE OBJECT TO STRAIGHT POSITION
 let stopRotateYX;
+
 function rotateYX(eva) {
+  let counterx = 0;
+  let countery = 0;
+  let counterz = 0;
   resetControls();
   stopRotateYX = window.requestAnimationFrame(function() {rotateYX(mesh)});
+  if(eva.rotation.z > 0) {
+    eva.rotation.z = 0;
+    counterz++;
+  }
+  if(eva.rotation.x < 0.2) {
+    eva.rotation.x = 0.2;
+    counterx++;
+  }
+  if( eva.rotation.y < 0) {
+    eva.rotation.y = 0;
+    countery++;
+  }
+  eva.rotation.z += 0.05;
+  eva.rotation.x -= 0.05;
+  eva.rotation.y -= 0.05;
+
+  if( counterz > 0 && counterx > 0 && countery > 0){
+    window.cancelAnimationFrame(stopRotateYX);
+  }
+  /*
   eva.rotation.z += 0.05;
   if(eva.rotation.z > 0) {
     eva.rotation.z = 0;
@@ -294,7 +318,7 @@ function rotateYX(eva) {
 
     }
 
-  }
+  } */
 }
 
 // CHANGE OBJECT POSITION AND ROTATION AFTER CLICKING MENU BLOCKS, SHOW MAIN  BLOCK
@@ -341,9 +365,7 @@ function showMainSection(target) {
   buttonback.addEventListener("click", back);
 }
 
-
-
-menuProfile.addEventListener("click", function (event) {
+function openMainMenu(event) {
   let target = event.target;
   console.log(target.parentNode, "parent");
   menu.style.display = "none";
@@ -358,11 +380,11 @@ menuProfile.addEventListener("click", function (event) {
     showMainSection(target);
     setTimeout(rotateYX, 500, mesh);
   }, 2000);
-  //showMainSection();
+}
 
-});
-menuPortfolio.addEventListener("click", showMainSection);
-menuContacts.addEventListener("click", showMainSection);
+menuProfile.addEventListener("click", openMainMenu);
+menuPortfolio.addEventListener("click", openMainMenu);
+menuContacts.addEventListener("click", openMainMenu);
 
 /*
 
