@@ -1,10 +1,12 @@
 /**
  * Created by Alien on 18.03.2019.
  */
-//document.addEventListener("DOMContentLoaded", init);
 
 
-//function init() {
+document.addEventListener("DOMContentLoaded", setTimeout(init, 1000));
+
+
+function init() {
 
   let scene = new THREE.Scene();
 
@@ -368,9 +370,9 @@ function openMainMenu(event) {
   console.log(target.parentNode, "parent");
   menu.style.display = "none";
   setTimeout(function() {
-    spaceship.classList.toggle("spaceship__animate");
+    spaceship.classList.toggle("spaceship__back");
     container.style.left = "40%";
-    layDown();
+    layDown(mesh);
 
   }, 500);
   setTimeout(function() {
@@ -384,29 +386,7 @@ menuProfile.addEventListener("click", openMainMenu);
 menuPortfolio.addEventListener("click", openMainMenu);
 menuContacts.addEventListener("click", openMainMenu);
 
-/*
-
-let stopRotateY;
-function rotateY(object) {
-  resetControls();
-  stopRotateY = window.requestAnimationFrame(function() {rotateY(mesh2)});
-  if(object.rotation.z > -  1.5) {
-    object.rotation.z -= .05;
-    object.rotation.y -= 0.01;
-    spaceship.style.height = 600 + "px";
-    renderer2.setSize( 600, 600 );
-  }
-
-
-
-  //window.cancelAnimationFrame(stopRotateY);
-}
-
-*/
-//rotateY(mesh2);
-
-//spaceship.addEventListener("click", function() {container.classList.toggle("container__left")});
-//menu.addEventListener("click", function(){container.style.left = "80%"});
+// ROTATE OBJECT TO LAY DOWN POSITION
   let stopLayDown;
   function layDown(eva) {
     let counter = 0;
@@ -457,30 +437,6 @@ function rotateY(object) {
 
 
   }
-//}
+} // init
 
 
-/*
- container.addEventListener("click", rotor);
- var id;
- function rotor(target) {
-
-
-
- mesh.rotation.z += -.05 ;
- mesh.rotation.x += .05 ;
- mesh.rotation.y += .05;
- id = requestAnimationFrame( rotor );
- //console.log(mesh.rotation.z, "mesh.rotation.z");
-
- if( mesh.rotation.z < -1.55 || mesh.rotation.x > 1.3 && mesh.rotation.y > 0.05) {
- console.log(mesh.rotation.x, "mesh.rotation.x");
- console.log(mesh.rotation.z, "mesh.rotation.z");
- window.cancelAnimationFrame(id);
- temp = 1;
- }
-
- }
-
-
-*/

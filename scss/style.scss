@@ -981,10 +981,11 @@ margin-top: 0;
   z-index: 300;
   border: 1px solid red;
   transition: transform .8s ease-in-out;
+  transform:  scale(-2);
 }
 
 
-.spaceship__animate {
+.spaceship__back {
   -webkit-animation: slide 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: slide 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
@@ -993,5 +994,21 @@ margin-top: 0;
   100% {
     -webkit-transform: translate(-65%, -65%) rotate(90deg);
     transform: translate(-65%, -65%) rotate(90deg);
+  }
+}
+
+.spaceship__appearance {
+  -webkit-animation: scale 8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: scale 8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes scale {
+  0% {
+    -webkit-transform: translate(-2300px, -2300px) scale(-2);
+    transform: translate(-2300px, -2300px) scale(-2);
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%) scale(1);
+    transform: translate(0%, 0%) scale(1);
   }
 }
