@@ -370,6 +370,7 @@ function openMainMenu(event) {
   console.log(target.parentNode, "parent");
   menu.style.display = "none";
   setTimeout(function() {
+    spaceship.classList.toggle("spaceship__appearance");
     spaceship.classList.toggle("spaceship__back");
     container.style.left = "40%";
     layDown(mesh);
