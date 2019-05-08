@@ -980,8 +980,8 @@ margin-top: 0;
   margin-left: -300px;
   z-index: 300;
   border: 1px solid red;
-  transition: transform .8s ease-in-out;
-  transform:  scale(-2);
+ //transition: transform .8s ease-in-out;
+  //transform:  scale(-2);
 }
 
 
@@ -991,6 +991,10 @@ margin-top: 0;
 }
 
 @keyframes slide {
+  0% {
+    -webkit-transform: translate(0%, 0%) rotate(0deg);
+    transform: translate(0%, 0%) rotate(0deg);
+  }
   100% {
     -webkit-transform: translate(-65%, -65%) rotate(90deg);
     transform: translate(-65%, -65%) rotate(90deg);

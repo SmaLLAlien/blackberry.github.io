@@ -3,7 +3,7 @@
  */
 
 
-document.addEventListener("DOMContentLoaded", setTimeout(init, 1000));
+document.addEventListener("DOMContentLoaded", init);
 
 
 function init() {
