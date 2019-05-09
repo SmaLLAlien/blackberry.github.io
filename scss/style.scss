@@ -219,10 +219,10 @@ body {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   z-index: 100;
-  border: 1px solid red;
+  //border: 1px solid red;
 }
 
-
+/*
 .container__animate {
   -webkit-animation: slide-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   animation: slide-bottom 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -236,6 +236,24 @@ body {
   100% {
     -webkit-transform: translateY(0%);
     transform: translateY(0%);
+  }
+}
+
+*/
+
+.container__animate {
+  -webkit-animation: slide-bottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: slide-bottom 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translate(-2300px, -2300px) scale(-2);
+    transform: translate(-2300px, -2300px) scale(-2);
+  }
+  100% {
+    -webkit-transform: translate(0%, 0%) scale(1);
+    transform: translate(0%, 0%) scale(1);
   }
 }
 
@@ -272,7 +290,7 @@ body {
 .main {
   width: 600px;
   height: 450px;
-  border: 1px solid red;
+  //border: 1px solid red;
   overflow: hidden;
   position: absolute;
   z-index: 200;
@@ -994,7 +1012,7 @@ body {
   left: 50%;
   margin-left: -300px;
   z-index: 300;
-  border: 1px solid red;
+  //border: 1px solid red;
  //transition: transform .8s ease-in-out;
   //transform:  scale(-2);
 }
@@ -1033,8 +1051,8 @@ body {
 }
 
 .spaceship__appearance {
-  -webkit-animation: scale 6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: scale 6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: scale 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: scale 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @keyframes scale {

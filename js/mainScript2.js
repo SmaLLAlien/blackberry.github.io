@@ -258,9 +258,9 @@ let menuContacts = document.getElementsByClassName("menu__link")[2];
 
   }
 
-  setTimeout(function() {lookingRight(mesh)},2500 ); //4000
-  setTimeout(function() {lookingLeft(mesh)}, 4000); //6000
-  setTimeout(function() {lookingCenter(mesh)}, 6000); //10500
+  setTimeout(function() {lookingRight(mesh)},3000 ); //4000
+  setTimeout(function() {lookingLeft(mesh)}, 4500); //6000
+  setTimeout(function() {lookingCenter(mesh)}, 6500); //10500
 
 
 
@@ -359,6 +359,7 @@ function showMainSection(target) {
     console.log(4);
   }
   */
+// BACK CONTAINER AND SPACESHIP POSITION, SHOW MENU NAVIGATION, CLOSE MAIN MENU
   function back() {
     main.style.width = 0;
     spaceship.classList.remove("spaceship__back");
@@ -375,6 +376,7 @@ function showMainSection(target) {
   buttonback.addEventListener("click", back);
 }
 
+// SHOW MAIN MENU, CHANHE CONTAINER AND SPACESHIP POSITION, HIDE MENU NAVIGATION
 function openMainMenu(event) {
   let target = event.target;
   console.log(target.parentNode, "parent");
