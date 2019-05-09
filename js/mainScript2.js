@@ -361,6 +361,16 @@ function showMainSection(target) {
   */
   function back() {
     main.style.width = 0;
+    spaceship.classList.remove("spaceship__back");
+    spaceship.classList.add("spaceship__previous");
+
+    container.classList.remove("container__left");
+    container.classList.add("container__previous");
+    setTimeout(function(){
+      menu.style.display = "flex";
+      blink(menuChildren[1]);
+      blink(menuChildren[0]);
+    }, 1000)
   }
   buttonback.addEventListener("click", back);
 }
@@ -370,14 +380,18 @@ function openMainMenu(event) {
   console.log(target.parentNode, "parent");
   menu.style.display = "none";
   setTimeout(function() {
-    spaceship.classList.toggle("spaceship__appearance");
-    spaceship.classList.toggle("spaceship__back");
+    spaceship.classList.remove("spaceship__appearance");
+    spaceship.classList.remove("spaceship__previous");
+    spaceship.classList.add("spaceship__back");
     container.style.left = "40%";
     layDown(mesh);
 
   }, 500);
   setTimeout(function() {
-    container.classList.toggle("container__left");
+    container.classList.remove("container__animate");
+    container.classList.remove("container__previous");
+    container.classList.add("container__left");
+    container.style.left = "50%";
     showMainSection(target);
     setTimeout(rotateYX, 500, mesh);
   }, 1500);
