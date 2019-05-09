@@ -199,16 +199,16 @@ body {
 
 @keyframes slide-left {
   100% {
-    -webkit-transform: translate(175%);
-    transform: translate(175%); } }
+    -webkit-transform: translate(105%);
+    transform: translate(105%); } }
 .container__previous {
   -webkit-animation: previousContainer 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: previousContainer 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
 
 @keyframes previousContainer {
   0% {
-    -webkit-transform: translate(175%);
-    transform: translate(175%); }
+    -webkit-transform: translate(105%);
+    transform: translate(105%); }
   100% {
     -webkit-transform: translate(0%);
     transform: translate(0%); } }

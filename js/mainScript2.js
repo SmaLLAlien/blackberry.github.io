@@ -324,7 +324,7 @@ function rotateYX(eva) {
 // CHANGE OBJECT POSITION AND ROTATION AFTER CLICKING MENU BLOCKS, SHOW MAIN  BLOCK
 function showMainSection(target) {
 
-  changeWidth(main);
+  //changeWidth(main);
   //container.style.left = "75%";
   let buttonback;
   //let target = event.target;
@@ -359,6 +359,8 @@ function showMainSection(target) {
     console.log(4);
   }
   */
+  changeWidth(main);
+
 // BACK CONTAINER AND SPACESHIP POSITION, SHOW MENU NAVIGATION, CLOSE MAIN MENU
   function back() {
     main.style.width = 0;
@@ -385,11 +387,16 @@ function openMainMenu(event) {
     spaceship.classList.remove("spaceship__appearance");
     spaceship.classList.remove("spaceship__previous");
     spaceship.classList.add("spaceship__back");
-    container.style.left = "40%";
+    container.style.left = "42%";
     layDown(mesh);
 
   }, 500);
+  /*setTimeout(function () {
+    container.style.left = "40%";
+    layDown(mesh);
+  }, 1000);*/
   setTimeout(function() {
+
     container.classList.remove("container__animate");
     container.classList.remove("container__previous");
     container.classList.add("container__left");
