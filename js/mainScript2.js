@@ -364,8 +364,8 @@ function showMainSection(target) {
 // BACK CONTAINER AND SPACESHIP POSITION, SHOW MENU NAVIGATION, CLOSE MAIN MENU
   function back() {
     main.style.width = 0;
-    spaceship.classList.remove("spaceship__back");
-    spaceship.classList.add("spaceship__previous");
+    spaceship.classList.remove("spaceship__right");
+    spaceship.classList.add("spaceship__down");
 
     container.classList.remove("container__left");
     container.classList.add("container__previous");
@@ -385,8 +385,8 @@ function openMainMenu(event) {
   menu.style.display = "none";
   setTimeout(function() {
     spaceship.classList.remove("spaceship__appearance");
-    spaceship.classList.remove("spaceship__previous");
-    spaceship.classList.add("spaceship__back");
+    spaceship.classList.remove("spaceship__down");
+    spaceship.classList.add("spaceship__right");
     container.style.left = "42%";
     layDown(mesh);
 

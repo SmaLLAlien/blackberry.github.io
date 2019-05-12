@@ -219,7 +219,7 @@ body {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   z-index: 100;
-  border: 1px solid green;
+  //border: 1px solid green;
 }
 
 /*
@@ -287,8 +287,9 @@ body {
   }
 }
 
+// WAS ADDED THAT MAIN MENU APPEAR FROM LEFT TO RIGHT BUT NOT FROM CENTER TO RIGHT
 .cover {
-  border: 2px solid black;
+  //border: 2px solid black;
   position: absolute;
   width: 900px;
   height: 360px;
@@ -303,7 +304,7 @@ body {
 .main {
   width: 600px;
   height: 450px;
-  border: 1px solid red;
+  //border: 1px solid red;
   overflow: hidden;
   position: absolute;
   z-index: 200;
@@ -1027,18 +1028,18 @@ body {
   left: 50%;
   margin-left: -300px;
   z-index: 300;
-  border: 1px solid red;
+  //border: 1px solid red;
  //transition: transform .8s ease-in-out;
   //transform:  scale(-2);
 }
 
 
-.spaceship__back {
-  -webkit-animation: slide 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.spaceship__right {
+  -webkit-animation: right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: right 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-@keyframes slide {
+@keyframes right {
   0% {
     -webkit-transform: translate(0%, 0%) rotate(0deg);
     transform: translate(0%, 0%) rotate(0deg);
@@ -1049,12 +1050,12 @@ body {
   }
 }
 
-.spaceship__previous {
-  -webkit-animation: previous 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: previous 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+.spaceship__down {
+  -webkit-animation: down 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: down 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-@keyframes previous {
+@keyframes down {
   100% {
     -webkit-transform: translate(0%, 0%) rotate(0deg);
     transform: translate(0%, 0%) rotate(0deg);
@@ -1066,11 +1067,11 @@ body {
 }
 
 .spaceship__appearance {
-  -webkit-animation: scale 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: scale 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  -webkit-animation: appearance 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  animation: appearance 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
-@keyframes scale {
+@keyframes appearance {
   0% {
     -webkit-transform: translate(-2300px, -2300px) scale(-2);
     transform: translate(-2300px, -2300px) scale(-2);

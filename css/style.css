@@ -163,8 +163,7 @@ body {
   -moz-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  z-index: 100;
-  border: 1px solid green; }
+  z-index: 100; }
 
 /*
 .container__animate {
@@ -215,7 +214,6 @@ body {
     -webkit-transform: translate(0%);
     transform: translate(0%); } }
 .cover {
-  border: 2px solid black;
   position: absolute;
   width: 900px;
   height: 360px;
@@ -227,7 +225,6 @@ body {
 .main {
   width: 600px;
   height: 450px;
-  border: 1px solid red;
   overflow: hidden;
   position: absolute;
   z-index: 200;
@@ -782,25 +779,24 @@ body {
   bottom: 4%;
   left: 50%;
   margin-left: -300px;
-  z-index: 300;
-  border: 1px solid red; }
+  z-index: 300; }
 
-.spaceship__back {
-  -webkit-animation: slide 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: slide 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+.spaceship__right {
+  -webkit-animation: right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
 
-@keyframes slide {
+@keyframes right {
   0% {
     -webkit-transform: translate(0%, 0%) rotate(0deg);
     transform: translate(0%, 0%) rotate(0deg); }
   100% {
     -webkit-transform: translate(-65%, -65%) rotate(90deg);
     transform: translate(-65%, -65%) rotate(90deg); } }
-.spaceship__previous {
-  -webkit-animation: previous 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: previous 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+.spaceship__down {
+  -webkit-animation: down 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: down 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
 
-@keyframes previous {
+@keyframes down {
   100% {
     -webkit-transform: translate(0%, 0%) rotate(0deg);
     transform: translate(0%, 0%) rotate(0deg); }
@@ -808,10 +804,10 @@ body {
     -webkit-transform: translate(-65%, -65%) rotate(90deg);
     transform: translate(-65%, -65%) rotate(90deg); } }
 .spaceship__appearance {
-  -webkit-animation: scale 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: scale 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
+  -webkit-animation: appearance 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: appearance 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both; }
 
-@keyframes scale {
+@keyframes appearance {
   0% {
     -webkit-transform: translate(-2300px, -2300px) scale(-2);
     transform: translate(-2300px, -2300px) scale(-2); }
