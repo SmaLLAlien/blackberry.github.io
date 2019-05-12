@@ -63,7 +63,7 @@ camera2.position.z = 2000;
 
 
 
-  camera.position.z = 400;
+  camera.position.z = 425;
 
   let mesh;
 
@@ -76,7 +76,7 @@ camera2.position.z = 2000;
 
 
 
-    mesh.position.set(10, -30, 1);
+    mesh.position.set(10, -50, 1);
     mesh.rotation.set(0.2, 0, 0);
   } );
 
@@ -164,7 +164,7 @@ let menuContacts = document.getElementsByClassName("menu__link")[2];
   //blink(menuChildren[0]);
   function resetControls() {
     stopReset =  requestAnimationFrame( resetControls );
-    if(controls.object.position.z > 400) {
+    if(controls.object.position.z > 425) {
       controls.object.position.z -= 1;
       if(controls.object.position.x > 0){
         controls.object.position.x -= 1;
@@ -207,7 +207,7 @@ let menuContacts = document.getElementsByClassName("menu__link")[2];
         }
       }
     }
-    if( (controls.object.position.z <= 401 && controls.object.position.z >= 398) && (controls.object.position.y <= 4 && controls.object.position.y >= 1) && (controls.object.position.x <=2 && controls.object.position.x >=-1 ) ) {
+    if( (controls.object.position.z <= 427 && controls.object.position.z >= 424) && (controls.object.position.y <= 4 && controls.object.position.y >= 1) && (controls.object.position.x <=2 && controls.object.position.x >=-1 ) ) {
       //console.log("1");
       window.cancelAnimationFrame(stopReset);
 
@@ -278,12 +278,12 @@ function changeWidth(div) {
 }
 
 // ROTATE OBJECT TO STRAIGHT POSITION
-let stopRotateYX;
+let stopStandUp;
 
-function rotateYX(eva) {
+function standUp(eva) {
   let counter = 0;
   resetControls();
-  stopRotateYX = window.requestAnimationFrame(function() {rotateYX(mesh)});
+  stopStandUp = window.requestAnimationFrame(function() {standUp(mesh)});
   if(eva.rotation.z > 0) {
     eva.rotation.z = 0;
     counter++;
@@ -301,7 +301,7 @@ function rotateYX(eva) {
   eva.rotation.y -= 0.05;
 
   if( counter >= 3){
-    window.cancelAnimationFrame(stopRotateYX);
+    window.cancelAnimationFrame(stopStandUp);
   }
   /*
   eva.rotation.z += 0.05;
@@ -369,6 +369,7 @@ function showMainSection(target) {
 
     container.classList.remove("container__left");
     container.classList.add("container__previous");
+    toLookStraight(mesh);
     setTimeout(function(){
       menu.style.display = "flex";
       blink(menuChildren[1]);
@@ -387,14 +388,16 @@ function openMainMenu(event) {
     spaceship.classList.remove("spaceship__appearance");
     spaceship.classList.remove("spaceship__down");
     spaceship.classList.add("spaceship__right");
-    container.style.left = "42%";
+    container.style.left = "44%";
     layDown(mesh);
 
   }, 500);
-  /*setTimeout(function () {
+  /*
+  setTimeout(function () {
     container.style.left = "40%";
     layDown(mesh);
-  }, 1000);*/
+  }, 1000);
+  */
   setTimeout(function() {
 
     container.classList.remove("container__animate");
@@ -402,7 +405,7 @@ function openMainMenu(event) {
     container.classList.add("container__left");
     container.style.left = "50%";
     showMainSection(target);
-    setTimeout(rotateYX, 500, mesh);
+    setTimeout(standUp, 500, mesh);
   }, 1500);
 }
 
@@ -421,8 +424,8 @@ menuContacts.addEventListener("click", openMainMenu);
       eva.rotation.z = -1.55;
       counter++;
     }
-    if( eva.rotation.x >= 1.3) {
-      eva.rotation.x = 1.3;
+    if( eva.rotation.x >= 1.2) {
+      eva.rotation.x = 1.2;
       counter++;
     }
     if(eva.rotation.y >= 0.15) {
@@ -460,6 +463,10 @@ menuContacts.addEventListener("click", openMainMenu);
 
 
 
+  }
+  function toLookStraight(eva) {
+    resetControls();
+    eva.rotation.set(0.2, 0, 0);
   }
 } // init
 

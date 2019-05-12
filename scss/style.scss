@@ -75,7 +75,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  min-width: 600px;
+  min-width: 900px;
   max-width: 1920px;
   position: relative;
 }
@@ -192,6 +192,22 @@ body {
 
 }
 
+@media all and (max-width: 1500px) {
+  .menu {
+    width: 65%;
+  }
+}
+@media all and (max-width: 1200px) {
+  .menu {
+    width: 85%;
+  }
+}
+@media all and (max-width: 900px) {
+  .menu {
+    width: 100%;
+  }
+}
+
 @keyframes blink {
   0% {
     color: $arrows;
@@ -205,8 +221,8 @@ body {
 
 
 #container {
-  width: 300px;
-  height: 300px;
+  width: 310px;
+  height: 310px;
   position: absolute;
   //top: -300px;
   left: 50%;
